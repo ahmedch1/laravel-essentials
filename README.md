@@ -1,3 +1,35 @@
+<h2>About this repository</h2>
+This is for training purpose , I am following this tutorial
+
+https://www.linkedin.com/learning/laravel-5-essential-training-2
+
+As I am using Latest version of Laravel version 8,  
+For auth I have used this commands :
+In Laravel 6.0 make:auth no longer exists:php artisan make:auth  ( which works for Laravel 5.8 and older versions )
+<br/>Solution:
+
+Run :composer require laravel/ui<br/>
+
+php artisan ui:auth<br/>
+
+You can also generate the views only with:</br>
+
+php artisan ui:auth --views<br/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
