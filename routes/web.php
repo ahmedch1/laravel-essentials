@@ -24,3 +24,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/test', function () {
     return "GoodBye";
 });
+
+Route::get('/rooms',[App\Http\Controllers\ShowRoomsController::class, '__invoke']);
