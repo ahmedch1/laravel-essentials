@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Booking;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BookingController extends Controller
 {
@@ -13,7 +15,9 @@ class BookingController extends Controller
      */
     public function index()
     {
-        \DB::table('bookings')->get()->dd();
+        $bookings = DB::table('bookings')->get();
+        return view('bookings.index')
+            ->with('bookings', $bookings);
     }
 
     /**
