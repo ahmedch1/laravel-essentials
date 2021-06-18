@@ -26,5 +26,4 @@ Route::get('/test', function () {
 });
 
 Route::get('/rooms',[App\Http\Controllers\ShowRoomsController::class, '__invoke']);
-
-Route::resource('bookings','BookingController');
+Route::resource('/bookings','\App\Http\Controllers\BookingController');
