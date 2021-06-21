@@ -42,17 +42,17 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-        $id=DB::table('bookings')->insertGetId([
-            'room_id'=>$request->input('room_id'),
-            'start'=>$request->input('start'),
-            'end'=>$request->input('start'),
-            'is_reservation'=>$request->input('is_reservation',false),
-            'is_paid'=>$request->input('is_paid',false),
-            'notes'=>$request->input('notes'),
+        $id = DB::table('bookings')->insertGetId([
+            'room_id' => $request->input('room_id'),
+            'start' => $request->input('start'),
+            'end' => $request->input('start'),
+            'is_reservation' => $request->input('is_reservation', false),
+            'is_paid' => $request->input('is_paid', false),
+            'notes' => $request->input('notes'),
         ]);
         DB::table('bookings_users')->insert([
-            'booking_id'=>$id,
-            'user_id'=>$request->input('user_id'),
+            'booking_id' => $id,
+            'user_id' => $request->input('user_id'),
         ]);
         return redirect()->action('App\Http\Controllers\BookingController@index');
     }
@@ -65,7 +65,7 @@ class BookingController extends Controller
      */
     public function show(Booking $booking)
     {
-       return view('bookings.show',['booking'=>$booking]);
+        return view('bookings.show', ['booking' => $booking]);
     }
 
     /**
@@ -76,7 +76,14 @@ class BookingController extends Controller
      */
     public function edit(Booking $booking)
     {
-        //
+        $users = DB::table('users')->get()->pluck('name', 'id')->prepend('none');
+        $rooms = DB::table('rooms')->get()->pluck('number', 'id');
+        $bookingsUser = DB::table('bookings_users')->where('booking_id', $booking->id)->first();
+        return view('bookings.edit')
+            ->with('users', $users)
+            ->with('rooms', $rooms)
+            ->with('bookingsUser',$bookingsUser)
+            ->with('booking', $booking);
     }
 
     /**
