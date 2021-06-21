@@ -45,7 +45,7 @@ class BookingController extends Controller
         $id = DB::table('bookings')->insertGetId([
             'room_id' => $request->input('room_id'),
             'start' => $request->input('start'),
-            'end' => $request->input('start'),
+            'end' => $request->input('end'),
             'is_reservation' => $request->input('is_reservation', false),
             'is_paid' => $request->input('is_paid', false),
             'notes' => $request->input('notes'),
@@ -82,7 +82,7 @@ class BookingController extends Controller
         return view('bookings.edit')
             ->with('users', $users)
             ->with('rooms', $rooms)
-            ->with('bookingsUser',$bookingsUser)
+            ->with('bookingsUser', $bookingsUser)
             ->with('booking', $booking);
     }
 
@@ -95,7 +95,22 @@ class BookingController extends Controller
      */
     public function update(Request $request, Booking $booking)
     {
-        //
+        DB::table('bookings')
+            ->where('id', $booking->id)
+            ->update([
+                'room_id' => $request->input('room_id'),
+                'start' => $request->input('start'),
+                'end' => $request->input('end'),
+                'is_reservation' => $request->input('is_reservation', false),
+                'is_paid' => $request->input('is_paid', false),
+                'notes' => $request->input('notes'),
+            ]);
+        DB::table('bookings_users')
+            ->where('booking_id', $booking->id)
+            ->update([
+                'user_id' => $request->input('user_id'),
+            ]);
+        return redirect()->action('App\Http\Controllers\BookingController@index');
     }
 
     /**
