@@ -18,7 +18,7 @@
                 <td>
                     {{$room->number}}
                 </td>
-                <td>{{$room->room_type_id}}</td>
+                <td>{{$room->roomType->name}}</td>
             </tr>
         @endforeach
         </tbody>
