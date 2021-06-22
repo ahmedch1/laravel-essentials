@@ -18,8 +18,8 @@
         <select name="user_id" class="form-control" id="user_id" required>
             @foreach($users as $id => $display)
                 <option
-                    value="{{ $id }}" {{(isset($bookingUser->user_id) &&
-$id=== $bookingUser->user_id) ? 'selected': ''}}>{{ $display }}</option>
+                    value="{{ $id }}" {{(isset($bookingsUser->user_id) &&
+$id=== $bookingsUser->user_id) ? 'selected': ''}}>{{ $display }}</option>
             @endforeach
         </select>
         <small class="form-text text-muted">The user booking the room.</small>
