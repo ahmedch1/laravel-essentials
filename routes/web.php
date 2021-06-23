@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ShowRoomsController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,11 +22,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/test', function () {
     return "GoodBye";
 });
 
-Route::get('/rooms/{roomType?}',[App\Http\Controllers\ShowRoomsController::class, '__invoke']);
+Route::get('/rooms/{roomType?}',[ShowRoomsController::class, '__invoke']);
 Route::resource('/bookings','\App\Http\Controllers\BookingController');
