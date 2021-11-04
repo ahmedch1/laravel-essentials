@@ -16,9 +16,10 @@ You can also generate the views only with:</br>
 
 php artisan ui:auth --views<br/>
 
+I have reached this part : 
 
 
-
+https://www.linkedin.com/learning/laravel-6-essential-training-testing-securing-and-deploying-apps/
 
 
 
