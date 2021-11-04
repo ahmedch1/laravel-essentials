@@ -21,7 +21,14 @@ I have reached this part :
 
 https://www.linkedin.com/learning/laravel-6-essential-training-testing-securing-and-deploying-apps/
 
-
+<strong>Steps to run Laravel Project </strong>
+composer install
+npm install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate
+php artisan db:seed
+php artisan serve
 
 
 
